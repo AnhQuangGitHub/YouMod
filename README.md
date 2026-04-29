@@ -1,4 +1,4 @@
-# YouMod
+# KiraTuno
 A tweak that's try to recreate features like in YTLite as much as possible. Contributors are welcome! ^^
 
 Thanks for 100 stars and forks in a week! This might be the best project I've done.
