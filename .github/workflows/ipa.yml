@@ -198,8 +198,8 @@ jobs:
       - name: Clone PSHeader
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/PSHeader.git $THEOS/include/PSHeader
 
-      - name: Clone YTFlags
-        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YTFlags.git
+      - name: Clone YouMod
+        run: git clone --quiet --depth=1 https://github.com/Tonwalter888/YouMod.git
 
       - name: Clone YouPiP
         if: ${{ inputs.youpip }}
@@ -309,6 +309,12 @@ jobs:
           cd YouGroupSettings
           make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ygs.deb
+
+      - name: Build YouMod
+        run: |
+          cd YouMod
+          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          mv packages/*.deb ${{ github.workspace }}/youmod.deb
 
       - name: Build YTVideoOverlay
         if: ${{ inputs.youpip || inputs.ytuhd || inputs.youquality || inputs.youspeed || inputs.youmute || inputs.youloop || inputs.youshare || inputs.getcap }}
@@ -427,7 +433,7 @@ jobs:
       - name: Build YTAnotherMiniplayer
         run: |
           cd YTAnotherMiniplayer
-          make clean package DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          make clean packager DEBUG=0 FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
           mv packages/*.deb ${{ github.workspace }}/ytanmp.deb
           
       - name: Inject Tweaks Into IPA
